@@ -16,9 +16,14 @@ def generate_trended_point_cloud(num_points=random.randint(10, 100), trend=rando
     point_cloud = [(random.uniform(-1, 1), random.uniform(-1, 1), random.uniform(-1, 1) + trend * i) for i in range(num_points)]
     return point_cloud
 
-
 def avg(point_cloud) -> list[float]:
-    return [sum(coord) / len(point_cloud) for coord in zip(*point_cloud)]
+    length = len(point_cloud)
+    axis = len(point_cloud[0])
+    averages = []
+    for i in range(axis):
+        averages.append(sum([point[i] for point in point_cloud]) / length)
+
+    return averages
 
 def variance(point_cloud) -> float:
     # Calculating the variance of the point cloud
