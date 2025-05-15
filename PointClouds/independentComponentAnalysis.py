@@ -10,6 +10,8 @@ point_cloud_centered = point_cloud - np.mean(point_cloud, axis=0)
 ica = FastICA(n_components=2)
 point_cloud_transformed = ica.fit_transform(point_cloud_centered)
 
+assert point_cloud_transformed != None
+
 # Plotting the original and transformed point clouds
 plt.figure(figsize=(12, 6))
 plt.subplot(1, 2, 1)
